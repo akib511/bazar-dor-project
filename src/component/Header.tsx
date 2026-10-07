@@ -40,7 +40,7 @@ const Header = () => {
       </div>
       <Suspense
         fallback={
-          <div className="h-6 w-40 animate-pulse rounded bg-gray-200" />
+          <div  />
         }
       >
         <NavLink />
