@@ -19,7 +19,7 @@ interface Product {
   };
 }
 
-const TopGainers = async () => {
+const TopLosers = async () => {
   const res = await fetch(
     "https://api.api-store.workers.dev/api/bazardor/products",
   );
@@ -30,12 +30,12 @@ const TopGainers = async () => {
 
   const products: Product[] = await res.json();
 
-  const topGainers = products
-    .filter((product) => product.change.dir === "up")
+  const topLosers = products
+    .filter((product) => product.change.dir === "down")
     .sort((a, b) => b.change.pct - a.change.pct)
     .slice(0, 6);
 
-       const unitBn: Record<string, string> = {
+     const unitBn: Record<string, string> = {
     kg: "প্রতি কেজি",
    
   };
@@ -45,14 +45,14 @@ const TopGainers = async () => {
 
   return (
     <section className="mx-auto w-full max-w-[1150px] mt-8">
-      <div className="mb-5">
+      <div className="mb-5 pt-8">
         <h2 className="text-2xl font-bold text-gray-900">
-          <span className="font-bold text-red-500">▲ </span>আজ দাম বেড়েছে
+          <span className="font-bold text-green-500">▼ </span>আজ দাম কমেছে
         </h2>
       </div>
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
-        {topGainers.map((product) => (
+        {topLosers.map((product) => (
           <div
             key={product.id}
             className="group rounded-2xl border border-green-100 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
@@ -66,7 +66,7 @@ const TopGainers = async () => {
                 <div>
                   <h3 className="font-bold text-gray-900">{product.nameBn}</h3>
 
-                 <span className="text-sm text-gray-500">
+                  <span className="text-sm text-gray-500">
                      {unitBn[product.unit]}
                   </span>
                 </div>
@@ -82,13 +82,14 @@ const TopGainers = async () => {
                   <span className="text-2xl font-semibold text-gray-900">
                     {bn(product.today)}
                   </span>
+                 
                   <span className="text-gray-800 ">টাকা</span>
                 </div>
               </div>
 
               <div className="rounded-full bg-gray-100 px-3 py-2 text-right">
-                <p className="font-bold text-red-500">
-                  ▲ {product.change.pct}%
+                <p className="font-bold text-green-500">
+                    ▼  {product.change.pct}%
                 </p>
               </div>
             </div>
@@ -99,4 +100,4 @@ const TopGainers = async () => {
   );
 };
 
-export default TopGainers;
+export default TopLosers;
