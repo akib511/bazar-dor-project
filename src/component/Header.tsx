@@ -38,11 +38,7 @@ const Header = () => {
           </button>
         </div>
       </div>
-      <Suspense
-        fallback={
-          <div  />
-        }
-      >
+      <Suspense fallback={<div />}>
         <NavLink />
       </Suspense>
     </header>
