@@ -1,4 +1,5 @@
 
+import AllProducts from '@/component/AllProduct';
 import Banner from '@/component/Banner';
 import TopGainers from '@/component/TopGainers';
 import TopLosers from '@/component/TopLosers';
@@ -11,7 +12,7 @@ const page = () => {
        <Suspense> 
         <TopGainers /> 
        <TopLosers/>
-     
+     <AllProducts />
         </Suspense>
        
     </div>

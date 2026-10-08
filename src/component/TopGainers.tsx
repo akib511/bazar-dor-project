@@ -86,8 +86,8 @@ const TopGainers = async () => {
                 </div>
               </div>
 
-              <div className="rounded-full bg-gray-100 px-3 py-2 text-right">
-                <p className="font-bold text-red-500">
+              <div className="rounded-lg px-2 py-1 text-xs font-bold bg-red-50 text-red-500">
+                <p>
                   ▲ {product.change.pct}%
                 </p>
               </div>
