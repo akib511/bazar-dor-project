@@ -1,3 +1,4 @@
+import Link from "next/link";
 
 
 interface Product {
@@ -21,7 +22,7 @@ interface Product {
 
 const TopLosers = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
+    "https://api.abcz.workers.dev/api/bazardor/products",
   );
 
   if (!res.ok) {
@@ -53,9 +54,10 @@ const TopLosers = async () => {
 
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {topLosers.map((product) => (
-          <div
+           <Link
             key={product.id}
-            className="group rounded-2xl border border-green-100 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-lg"
+            href={`/product/${product.id}`}
+            className="group block rounded-2xl border border-green-100 bg-white p-5 shadow-sm transition-all duration-300 hover:-translate-y-1 hover:border-green-200 hover:shadow-lg"
           >
             <div className="flex items-start justify-between">
               <div className="flex items-center gap-3">
@@ -93,7 +95,10 @@ const TopLosers = async () => {
                 </p>
               </div>
             </div>
-          </div>
+            <div className="mt-4 border-t border-gray-100 pt-3 text-sm font-medium text-green-600 opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              বিস্তারিত দেখুন →
+            </div>
+          </Link>
         ))}
       </div>
     </section>

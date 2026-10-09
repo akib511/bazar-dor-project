@@ -26,14 +26,14 @@ const unitBn: Record<string, string> = {
 
 const Marquee = async () => {
   const res = await fetch(
-    "https://api.api-store.workers.dev/api/bazardor/products",
+    "https://api.abcz.workers.dev/api/bazardor/products",
   );
 
   const data: Product[] = await res.json();
 
   return (
     <div className="flex items-center">
-      <MarqueeText duration={11} direction="right" className="py-1">
+      <MarqueeText duration={10} direction="right" className="py-1">
         <div className="flex items-center gap-3 pt-6 whitespace-nowrap">
           {data.map((item) => (
             <div
